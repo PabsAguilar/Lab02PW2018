@@ -3,15 +3,22 @@ import { NgModule } from "@angular/core";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from "./navbar/navbar.component";
+import { FormsModule } from "@angular/forms";
 
 // import { RegistrationComponent } from './registration/registration.component';
 
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from "./home/home.component";
+import { SkuCRUDComponent } from "./sku-crud/sku-crud.component";
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule, NgbModule.forRoot()],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    SkuCRUDComponent
+  ],
+  imports: [BrowserModule, AppRoutingModule, NgbModule.forRoot(), FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
