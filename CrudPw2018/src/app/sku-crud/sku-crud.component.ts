@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { Sku } from "../../models/sku";
 
 @Component({
@@ -20,7 +21,10 @@ export class SkuCRUDComponent implements OnInit {
   selectedRow: number;
   // It maintains Array of countries.
   countries: string[] = ["US", "UK", "India", "UAE"];
-  constructor() {
+
+  closeResult: string;
+
+  constructor(private modalService: NgbModal) {
     this.skus.push(
       new Sku(
         "Johan",
@@ -63,7 +67,43 @@ export class SkuCRUDComponent implements OnInit {
     this.showNew = true;
   }
 
-  onEdit(index: number) {}
+  open(content) {
+    this.regModel = new Sku();
+    this.modalService
+      .open(content, { ariaLabelledBy: "modal-basic-title" })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  onEdit(content, index: number) {
+    this.regModel = this.skus[index];
+    this.modalService
+      .open(content, { ariaLabelledBy: "modal-basic-title" })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
 
   onDelete(index: number) {}
 
