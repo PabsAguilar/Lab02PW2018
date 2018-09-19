@@ -15,8 +15,7 @@ export class SkuCRUDComponent implements OnInit {
   regModel: Sku;
   // It maintains registration form display status. By default it will be false.
   showNew: Boolean = false;
-  // It will be either 'Save' or 'Update' based on operation.
-  submitType = "Save";
+
   // It maintains table row index based on selection.
   selectedRow: number;
   // It maintains Array of countries.
