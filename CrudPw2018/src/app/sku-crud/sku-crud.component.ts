@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { Sku } from "../../models/sku";
+import { Component, OnInit } from '@angular/core';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Sku } from '../../models/sku';
 
 @Component({
   selector: "app-sku-crud",
-  templateUrl: "./sku-crud.component.html",
+  templateUrl: './sku-crud.component.html',
   styleUrls: ["./sku-crud.component.css"]
 })
 export class SkuCRUDComponent implements OnInit {
@@ -16,7 +16,7 @@ export class SkuCRUDComponent implements OnInit {
   // It maintains registration form display status. By default it will be false.
   showNew: Boolean = false;
   // It will be either 'Save' or 'Update' based on operation.
-  submitType: string = "Save";
+  submitType = "Save";
   // It maintains table row index based on selection.
   selectedRow: number;
   // It maintains Array of countries.
