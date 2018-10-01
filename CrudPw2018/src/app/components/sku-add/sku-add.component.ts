@@ -25,7 +25,7 @@ export class SkuAddComponent implements OnInit {
 
   constructor(private modalService: NgbModal) {
     this.showModal = true;
-    this.family = "Electronic";
+    this.family = "Choose Family";
   }
   open(content) {
     this.modalService.open(content, { ariaLabelledBy: "modal-basic-title" });
@@ -36,14 +36,25 @@ export class SkuAddComponent implements OnInit {
     this.skuAdded.emit({
       sku: this.sku,
       description: this.description,
-      createDate: this.createDate,
+      createDate: new Date(),
       image: this.image,
       family: this.family,
       hide: true
     });
     this.modalService.dismissAll();
+    this.sku = "";
+    this.image = "";
+    this.family = "";
+    this.description = "";
   }
-
+  editSku(sku: Sku) {
+    alert("hola");
+    this.family = sku.family;
+    this.sku = sku.sku;
+    this.image = sku.image;
+    this.description = sku.description;
+    //  const modalRef = this.modalService.open(SkuAddComponent);
+  }
   onChangeFamily(family: string) {
     this.family = family;
   }
