@@ -10,16 +10,22 @@ import { FormsModule } from "@angular/forms";
 
 import { HomeComponent } from "./home/home.component";
 import { SkuCRUDComponent } from "./sku-crud/sku-crud.component";
+import { SkuAddComponent } from "./components/sku-add/sku-add.component";
+import { SkuListComponent } from "./components/sku-list/sku-list.component";
+import { DataService } from "./services/data.service";
+import { SkuComponent } from './components/sku/sku.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    SkuCRUDComponent
+    SkuAddComponent,
+    SkuListComponent,
+    SkuComponent
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule.forRoot(), FormsModule],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

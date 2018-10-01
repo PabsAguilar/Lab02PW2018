@@ -1,0 +1,17 @@
+<div>
+  <div class="card">
+    <div class="card-header">
+      <h2>{{sku.sku}}</h2>
+      <div class="float-right">
+        <a href="#" (click)="removeSku(sku)" class="btn btn-danger">
+          Remove
+        </a>
+      </div>
+
+    </div>
+    <div class="card-body" [hidden]='sku.hide'>
+      <p>{{sku.description}}</p>
+    </div>
+  </div>
+
+</div>
