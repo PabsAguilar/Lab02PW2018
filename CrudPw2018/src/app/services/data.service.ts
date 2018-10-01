@@ -9,39 +9,34 @@ export class DataService {
   constructor() {
     this.skus = [];
   }
-
-  getSkus(): Sku[] {
-    this.skus = this.getSkusFromLocalStorage();
+  getSkus() {
+    if (localStorage.getItem("skus") === null) {
+      this.skus = [];
+    } else {
+      this.skus = JSON.parse(localStorage.getItem("skus"));
+    }
     return this.skus;
   }
 
-  getSkusFromLocalStorage(): Sku[] {
-    if (localStorage.getItem("skus") === null) {
-      return [];
-    } else {
-      return JSON.parse(localStorage.getItem("skus"));
-    }
-  }
-
-  addSkus(sku: Sku): void {
-    let skus;
+  addSku(sku: Sku) {
+    this.skus.push(sku);
+    let skus = [];
     if (localStorage.getItem("skus") === null) {
       skus = [];
+      skus.push(sku);
+      localStorage.setItem("skus", JSON.stringify(skus));
     } else {
       skus = JSON.parse(localStorage.getItem("skus"));
+      skus.push(sku);
+      localStorage.setItem("skus", JSON.stringify(skus));
     }
-    skus.shift(sku);
-    this.saveSkuToLocalStorage();
   }
 
-  saveSkuToLocalStorage(): void {
-    localStorage.setItem("tasks", JSON.stringify(this.skus));
-  }
-  removeSkus(sku: Sku): void {
-    for (let i = 0; this.skus.length; i++) {
-      if (sku === this.skus[i]) {
+  deleteSku(sku: Sku) {
+    for (let i = 0; i < this.skus.length; i++) {
+      if (sku == this.skus[i]) {
         this.skus.splice(i, 1);
-        this.saveSkuToLocalStorage();
+        localStorage.setItem("skus", JSON.stringify(this.skus));
       }
     }
   }

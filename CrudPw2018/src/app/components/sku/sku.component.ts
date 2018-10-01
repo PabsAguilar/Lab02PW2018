@@ -13,4 +13,10 @@ export class SkuComponent implements OnInit {
   constructor(public dataService: DataService) {}
 
   ngOnInit() {}
+
+  removeSku(sku: Sku) {
+    if (confirm("Are you sure you want to delete this sku?")) {
+      this.dataService.deleteSku(sku);
+    }
+  }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-
 import { Sku } from "../../models/sku";
 import { DataService } from "../../services/data.service";
 
@@ -17,6 +16,6 @@ export class SkuListComponent implements OnInit {
   }
 
   addSku(sku: Sku) {
-    this.dataService.addSkus(sku);
+    this.dataService.addSku(sku);
   }
 }

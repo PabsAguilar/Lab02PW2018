@@ -1,6 +1,10 @@
 import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 import { Sku } from "../../models/sku";
-import { NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
+import {
+  NgbDateStruct,
+  NgbModal,
+  ModalDismissReasons
+} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-sku-add",
@@ -14,11 +18,18 @@ export class SkuAddComponent implements OnInit {
   image: string;
   family: string;
   hide: boolean;
+  showModal: boolean;
+  families: string[] = ["Electronic", "House", "Detergent", "Dairy"];
   @Output()
   skuAdded = new EventEmitter<Sku>();
 
-  constructor() {}
-
+  constructor(private modalService: NgbModal) {
+    this.showModal = true;
+    this.family = "Electronic";
+  }
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: "modal-basic-title" });
+  }
   ngOnInit() {}
 
   addTask() {
@@ -30,5 +41,10 @@ export class SkuAddComponent implements OnInit {
       family: this.family,
       hide: true
     });
+    this.modalService.dismissAll();
+  }
+
+  onChangeFamily(family: string) {
+    this.family = family;
   }
 }
