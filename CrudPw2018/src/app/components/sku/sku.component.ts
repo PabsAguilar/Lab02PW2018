@@ -38,7 +38,7 @@ export class SkuComponent implements OnInit {
   }
 
   updateTask() {
-    this.dataService.addSku(this.sku);
+    this.dataService.UpdatedItem(this.sku);
     this.modalService.dismissAll();
   }
 

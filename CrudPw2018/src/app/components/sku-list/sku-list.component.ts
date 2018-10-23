@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Sku } from "../../models/sku";
 import { DataService } from "../../services/data.service";
+//import { SlimLoadingBarService } from "ng4-slim-loading-bar";
 
 @Component({
   selector: "app-sku-list",
@@ -9,10 +10,18 @@ import { DataService } from "../../services/data.service";
 })
 export class SkuListComponent implements OnInit {
   skus: Sku[];
-  constructor(public dataService: DataService) {}
+  constructor(
+    public dataService: DataService,
+  //  private slimLoadingBarService: SlimLoadingBarService
+  ) {}
 
   ngOnInit() {
-    this.skus = this.dataService.getSkus();
+  //  this.slimLoadingBarService.start();
+    try {
+      this.skus = this.dataService.getSkus();
+    } catch (error) {}
+
+   // this.slimLoadingBarService.complete();
   }
 
   addSku(sku: Sku) {

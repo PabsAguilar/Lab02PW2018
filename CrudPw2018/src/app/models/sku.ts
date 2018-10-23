@@ -1,4 +1,5 @@
 export interface Sku {
+  _id: string;
   sku: string;
   description: string;
   createDate: Date;

@@ -3,6 +3,7 @@
     <div class="card-header">
       <h2>{{sku.sku}}</h2>
       <p> <b>Description: </b> {{sku.description}}</p>
+      <p>#{{sku._id}}</p>
       <div class="float-right">
         <button type="submit" (click)="updateSku(sku,content)" class="btn btn-warning">
           Edit

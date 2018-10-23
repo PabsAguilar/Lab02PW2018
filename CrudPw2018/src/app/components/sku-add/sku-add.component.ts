@@ -13,6 +13,7 @@ import {
 })
 export class SkuAddComponent implements OnInit {
   sku: string;
+  _id: string;
   description: string;
   createDate: NgbDateStruct;
   image: string;
@@ -34,6 +35,7 @@ export class SkuAddComponent implements OnInit {
 
   addTask() {
     this.skuAdded.emit({
+      _id: this._id,
       sku: this.sku,
       description: this.description,
       createDate: new Date(),
